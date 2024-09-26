@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "ClockIn Chrome Extension",
+  "description": "This extension will allows students to study more efficiently by blocking distracting websites.",
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup/popup.html"
+    },
+    "icons": {
+      "16": "icons/icon-16.png"
+    },
+    "background": {
+      "service_worker": "background.js",
+      "type": "module"
+    },
+    "permissions": [
+      "storage",
+      "tabs"
+    ]
+}
