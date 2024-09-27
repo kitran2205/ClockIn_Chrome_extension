@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ClockIn Chrome Extension</title>
   <link rel="stylesheet" href="bulma.min.css">
 </head>
+
 <body>
-  
+
   <div class="container m-3">
     <h1 class="title">ClockIn</h1>
   </div>
@@ -22,9 +24,9 @@
             <input class="input" type="text" placeholder="Enter task" />
           </p>
           <p class="control"></p>
-            <button class="button">
-              Easy
-            </button>
+          <button class="button">
+            Easy
+          </button>
           </p>
           <p class="control">
             <button class="button">
@@ -32,10 +34,16 @@
             </button>
           </p>
         </div>
-    </div>
+      </div>
   </nav>
-  
-
+  <div>
+    <div id="timer">01:00</div>
+    <button id="start" class="button" value="0.1">Start</button>
+    <button id="stop" class="button">Stop</button>
+    <button id="reset" class="button" disabled>Reset</button>
+    <script src="popup.js"></script>
+  </div>
 
 </body>
+
 </html>
