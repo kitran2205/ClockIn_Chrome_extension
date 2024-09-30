@@ -6,6 +6,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         startTimer();
     } else if (message.command === 'reset') {
         resetTimer();
+    } else if (message.command === 'stop') {
+        stopTimer();
     }
 });
 
@@ -32,23 +34,15 @@ function startTimer() {
     }
 }
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    // Existing message handling for 'start' and 'reset'
-
-    if (message.command === 'stop') {
-        stopTimer(); // Implement this function to pause the timer
-    }
-});
-
 function stopTimer() {
     clearInterval(countdown);
-    // Do not reset the time variable here to allow the timer to resume from where it was paused
+    isRunning = false; // Ensure to mark the timer as not running
+    updatePopup();
 }
 
 function resetTimer() {
     clearInterval(countdown);
-    time = 1 * 60; // Reset the timer to 25 minutes
-    isRunning = false; // Ensure to mark the timer as not running
+    time = 1 * 60; // Reset the timer
     updatePopup(); // Update the popup with the new time
 }
 
