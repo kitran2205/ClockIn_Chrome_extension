@@ -20,3 +20,28 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 });
 
+// Handle dropdown diffculty selector
+const dropdownItems = document.querySelectorAll('.dropdown-item');
+  const currentDifficultyText = document.getElementById('currentDifficulty');
+  const dropdown = document.querySelector('.dropdown'); // Dropdown container
+  
+  dropdownItems.forEach(item => {
+    item.addEventListener('click', (event) => {
+      event.preventDefault();
+      
+      // Get the selected difficulty
+      const selectedDifficulty = event.target.textContent;
+      
+      // Update the difficulty button text
+      currentDifficultyText.textContent = selectedDifficulty;
+
+      // Close the dropdown
+      dropdown.classList.remove('is-active');
+    });
+  });
+
+  // Toggle dropdown on button click
+  document.querySelector('.dropdown-trigger .button').addEventListener('click', () => {
+    dropdown.classList.toggle('is-active'); // Toggle dropdown visibility
+  });
+

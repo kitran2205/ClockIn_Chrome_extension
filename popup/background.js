@@ -1,5 +1,5 @@
 let countdown;
-let time = 1 * 60; // Initial timer set for 25 minutes
+let time = 5 * 60; // Initial timer set for 5 minutes
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.command === 'start') {
@@ -12,7 +12,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 function startTimer() {
-    if (time === 25 * 60 || countdown === undefined) { // Start a new timer if it's reset or not set
+    if (time === 5 * 60 || countdown === undefined) { // Start a new timer if it's reset or not set
         clearInterval(countdown); // Clear any existing intervals
         countdown = setInterval(() => {
             if (time > 0) {
@@ -42,7 +42,7 @@ function stopTimer() {
 
 function resetTimer() {
     clearInterval(countdown);
-    time = 1 * 60; // Reset the timer
+    time = 5 * 60; // Reset the timer
     updatePopup(); // Update the popup with the new time
 }
 

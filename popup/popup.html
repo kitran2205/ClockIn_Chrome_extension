@@ -16,18 +16,32 @@
   <nav class="level">
     <div class="level-left">
       <div class="level-item">
-        <p class="subtitle is-5"><strong>Add to TODO List</strong>
+        <p class="subtitle is-5"><strong>Add to TODO List</strong></p>
       </div>
       <div class="level-item">
         <div class="field has-addons">
           <p class="control">
             <input class="input" type="text" placeholder="Enter task" />
           </p>
-          <p class="control"></p>
-          <button class="button">
-            Easy
-          </button>
-          </p>
+          <div class="control">
+            <div class="dropdown is-hoverable">
+              <div class="dropdown-trigger">
+                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                  <span id = "currentDifficulty">Easy</span>
+                  <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  <a href="#" class="dropdown-item">Easy</a>
+                  <a href="#" class="dropdown-item">Medium</a>
+                  <a href="#" class="dropdown-item">Hard</a>
+                </div>
+              </div>
+            </div>
+          </div>
           <p class="control">
             <button class="button">
               Submit
@@ -35,7 +49,9 @@
           </p>
         </div>
       </div>
+    </div>
   </nav>
+
   <div>
     <div id="timer">01:00</div>
     <button id="start" class="button" value="0.1">Start</button>
