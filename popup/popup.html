@@ -7,57 +7,68 @@
   <title>ClockIn Chrome Extension</title>
   <link rel="stylesheet" href="bulma.min.css">
 </head>
+<style type="text/css">
+  body {
+    width: 30em;
+    height: 13em;
+  }
+</style>
 
 <body>
-
   <div class="container m-3">
     <h1 class="title">ClockIn</h1>
   </div>
-  <nav class="level">
-    <div class="level-left">
-      <div class="level-item">
-        <p class="subtitle is-5"><strong>Add to TODO List</strong></p>
-      </div>
-      <div class="level-item">
-        <div class="field has-addons">
-          <p class="control">
-            <input class="input" type="text" placeholder="Enter task" />
-          </p>
-          <div class="control">
-            <div class="dropdown is-hoverable">
-              <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span id = "currentDifficulty">Easy</span>
-                  <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                  </span>
-                </button>
-              </div>
-              <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                <div class="dropdown-content">
-                  <a href="#" class="dropdown-item">Easy</a>
-                  <a href="#" class="dropdown-item">Medium</a>
-                  <a href="#" class="dropdown-item">Hard</a>
+  <div id="container">
+    <div id="col-1">
+      <nav class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <p class="subtitle is-5"><strong>Add task</strong></p>
+            <div class="field has-addons">
+              <p class="control">
+                <input class="input" type="text" placeholder="Enter task" />
+              </p>
+              <div class="control">
+                <div class="dropdown is-hoverable">
+                  <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                      <span id="currentDifficulty">Easy</span>
+                      <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                    <div class="dropdown-content">
+                      <a href="#" class="dropdown-item">Easy</a>
+                      <a href="#" class="dropdown-item">Medium</a>
+                      <a href="#" class="dropdown-item">Hard</a>
+                    </div>
+                  </div>
                 </div>
+              </div>
+              <div class="level-item">
               </div>
             </div>
           </div>
-          <p class="control">
-            <button class="button">
-              Submit
-            </button>
-          </p>
         </div>
+        <p class="control">
+          <button class="button">
+            Submit
+          </button>
+        </p>
+    </div>
+    </nav>
+    <div class="verticalLine">
+      <div id="col-2">
+        <p class="subtitle is-5"><strong>Timer</strong></p>
+        <div id="timer">01:00</div>
+        <button id="start" class="button" value="0.1">Start</button>
+        <button id="stop" class="button">Stop</button>
+        <button id="reset" class="button" disabled>Reset</button>
+        <script src="popup.js"></script>
       </div>
     </div>
-  </nav>
-
-  <div>
-    <div id="timer">01:00</div>
-    <button id="start" class="button" value="0.1">Start</button>
-    <button id="stop" class="button">Stop</button>
-    <button id="reset" class="button" disabled>Reset</button>
-    <script src="popup.js"></script>
   </div>
 
 </body>
