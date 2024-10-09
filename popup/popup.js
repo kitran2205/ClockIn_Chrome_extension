@@ -40,8 +40,28 @@ const dropdownItems = document.querySelectorAll('.dropdown-item');
     });
   });
 
-  // Toggle dropdown on button click
   document.querySelector('.dropdown-trigger .button').addEventListener('click', () => {
     dropdown.classList.toggle('is-active'); // Toggle dropdown visibility
   });
 
+  document.getElementById('submit').addEventListener('click', () => {
+    const taskInput = document.querySelector('.input').value.trim(); // Get the task input value
+    const selectedDifficulty = document.getElementById('currentDifficulty').textContent; // Get the selected difficulty
+    let difficultySection;
+    if (!taskInput) return;
+    
+    if (selectedDifficulty === 'Hard') {
+      difficultySection = document.getElementById('hardtask');
+    } else if (selectedDifficulty === 'Medium') {
+      difficultySection = document.getElementById('mediumtask');
+    } else {
+      difficultySection = document.getElementById('easytask');
+    }
+  
+    const taskItem = document.createElement('p');
+    taskItem.innerHTML = `<input type="checkbox"/> - ${taskInput}`;
+  
+    difficultySection.appendChild(taskItem);
+  
+    document.querySelector('.input').value = '';
+  });

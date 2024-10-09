@@ -4,7 +4,8 @@
 
 #container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr)
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr)
 }
 
 #col-1 {
@@ -22,4 +23,49 @@ hr.solid {
 }
 .verticalLine {
   border-left: thick solid #111111;
+}
+
+.hard {
+  font-size: 1em;
+  color: rgba(253 38 38 / 88%);
+  text-decoration: underline;
+}
+
+.medium {
+  font-size: 1em;
+  color: rgba(231 221 4 / 100%);
+  text-decoration: underline;
+}
+
+.easy {
+  font-size: 1em;
+  color: rgba(116 239 27 / 95%);
+  text-decoration: underline;
+}
+
+.leftvertical {
+  border-right: thick solid #111111;
+  padding-right: 2em;
+}
+
+.todolist {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.settings {
+  display: block;
+  margin-left: auto;
+  margin-right: 1em;
+}
+
+.heading {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.todolist {
+  display: grid;
+  grid-row: (1fr 1fr 1fr);
+  row-gap: 2em;
 }

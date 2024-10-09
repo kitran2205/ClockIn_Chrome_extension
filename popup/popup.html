@@ -16,7 +16,14 @@
 
 <body>
   <div class="container m-3">
-    <h1 class="title">ClockIn</h1>
+    <div class="heading">
+      <h1 class="title">ClockIn</h1>
+      <div class="settings">
+      <button class="button">
+        <img src="icon/settings.png" width="20" height="20">
+      </button>
+      </div>
+    </div>  
   </div>
   <div id="container">
     <div id="col-1">
@@ -53,12 +60,32 @@
           </div>
         </div>
         <p class="control">
-          <button class="button">
+          <button class="button" id="submit">
             Submit
           </button>
         </p>
+      </nav>  
+      <div>
+      <div class="todolist">
+        <label class="todolist">TO DO LIST</label>
+        <div class="hardline">
+          <label class="hard">Hard</label>
+          <p id="hardtask">
+          </p>
+        </div>
+        <div class="medline"">
+          <label class="medium">Medium</label>
+          <p id="mediumtask">
+          </p>
+        </div>
+        <div class="smalline">
+          <label class="easy">Easy</label>
+          <p id="easytask">
+          </p>
+        </div>
+      </div>
     </div>
-    </nav>
+    </div>
     <div class="verticalLine">
       <div id="col-2">
         <p class="subtitle is-5"><strong>Timer</strong></p>
@@ -69,6 +96,7 @@
         <script src="popup.js"></script>
       </div>
     </div>
+    
   </div>
 
 </body>
