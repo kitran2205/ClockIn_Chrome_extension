@@ -18,5 +18,12 @@
     "tabs",
     "alarms",
     "notifications"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "web_accessible_resources": [
+    {
+      "resources": ["dashboard.html"],
+      "matches": ["<all_urls>"]
+    }
   ]
 }

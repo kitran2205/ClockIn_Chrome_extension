@@ -1,3 +1,7 @@
+document.getElementById('openDashboard').addEventListener('click', () => {
+  chrome.tabs.create({ url: "dashboard.html" });
+});
+
 document.getElementById('start').addEventListener('click', () => {
   chrome.runtime.sendMessage({ command: 'start' });
   document.getElementById('reset').disabled = false;

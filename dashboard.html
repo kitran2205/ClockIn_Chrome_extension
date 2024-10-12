@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClockIn Dashboard</title>
+  <link rel="stylesheet" href="popup/bulma.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">ClockIn Dashboard</h1>
+    <div class="field">
+      <label class="label">Add Website URL in the box below!</label>
+      <div class="control has-icons-left">
+        <input class="input" type="text" id="websiteInput" placeholder="Enter website to block" />
+      </div>
+    </div>
+    <div class="control">
+      <button class="button is-primary" id="submitWebsite">Submit</button>
+    </div>
+    <div class="block">
+      <h2 class="subtitle">Websites You Blocked!</h2>
+      <ul id="blockedList">
+      </ul>
+    </div>
+  </div>
+  <script src="dashboard.js"></script> 
+</body>
+<body>
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <h2 class="subtitle">Add a Task</h2>
+        <div class="field has-addons">
+          <div class="control">
+            <input id="taskInput" class="input" type="text" placeholder="Enter task">
+          </div>
+          <div class="control">
+            <div class="dropdown is-hoverable">
+              <div class="dropdown-trigger">
+                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                  <span id="currentDifficulty">Easy</span>
+                  <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  <a href="#" class="dropdown-item">Easy</a>
+                  <a href="#" class="dropdown-item">Medium</a>
+                  <a href="#" class="dropdown-item">Hard</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="control">
+            <button class="button" id="submitTask">Submit</button>
+          </div>
+        </div>
+
+        <h2 class="subtitle">To Do List</h2>
+        <div id="taskList">
+          <h3>Hard</h3>
+          <ul id="hardTasks"></ul>
+          <h3>Medium</h3>
+          <ul id="mediumTasks"></ul>
+          <h3>Easy</h3>
+          <ul id="easyTasks"></ul>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="subtitle">Timer</h2>
+        <div id="timer">05:00</div>
+        <button id="startTimer" class="button">Start</button>
+        <button id="stopTimer" class="button">Stop</button>
+        <button id="resetTimer" class="button">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
