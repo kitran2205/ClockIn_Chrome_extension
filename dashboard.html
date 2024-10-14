@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ClockIn Dashboard</title>
-  <link rel="stylesheet" href="popup/bulma.min.css">
+  <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
   <div class="container">
-    <h1 class="title">ClockIn Dashboard</h1>
+    <h1 class="title"><img src="../icons/icon-16.png" width="30" height="30">
+    Dashboard
+    </h1>
     <div class="field">
       <label class="label">Add Website URL in the box below!</label>
       <div class="control has-icons-left">
@@ -60,12 +62,12 @@
         </div>
 
         <h2 class="subtitle">To Do List</h2>
-        <div id="taskList">
-          <h3>Hard</h3>
+        <div class="todolist">
+          <h3 class="hard">Hard</h3>
           <ul id="hardTasks"></ul>
-          <h3>Medium</h3>
+          <h3 class="medium">Medium</h3>
           <ul id="mediumTasks"></ul>
-          <h3>Easy</h3>
+          <h3 class="easy">Easy</h3>
           <ul id="easyTasks"></ul>
         </div>
       </div>
