@@ -18,8 +18,10 @@
     <div class="heading">
       <h1 class="title">ClockIn Dashboard</h1>
       <div class="settings">
-      <button class="button">
-        <img src="icon/settings.png" width="20" height="20">
+      <button class="button" id="openDashboard">
+        <img src="../icons/settings.png" width="25" height="20">
+        <!-- Open Dashboard button here -->
+        Dashboard
       </button>
       </div>
     </div>  
@@ -88,13 +90,10 @@
     <div class="verticalLine">
       <div id="col-2">
         <p class="subtitle is-5"><strong>Timer</strong></p>
-        <div id="timer">01:00</div>
+        <div id="timer">05:00</div>
         <button id="start" class="button" value="0.1">Start</button>
         <button id="stop" class="button">Stop</button>
         <button id="reset" class="button" disabled>Reset</button>
-
-        <!-- Open Dashboard button here -->
-        <button id="openDashboard" class="button">Open Dashboard</button>
         <script src="popup.js"></script>
       </div>
     </div>
