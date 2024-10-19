@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ClockIn Dashboard</title>
   <link rel="stylesheet" href="dashboard.css">
 </head>
+
 <body>
   <div class="container">
-    <h1 class="title"><img src="../icons/icon-16.png" width="30" height="30">
-    Dashboard
-    </h1>
+    <h1 class="title"><img src="../icons/icon-16.png" width="30" height="30"> Dashboard</h1>
     <div class="field">
       <label class="label">Add Website URL in the box below!</label>
       <div class="control has-icons-left">
@@ -22,14 +22,9 @@
     </div>
     <div class="block">
       <h2 class="subtitle">Websites You Blocked!</h2>
-      <ul id="blockedList">
-      </ul>
+      <ul id="blockedList"></ul>
     </div>
-  </div>
-  <script src="dashboard.js"></script> 
-</body>
-<body>
-  <div class="container">
+
     <div class="columns">
       <div class="column">
         <h2 class="subtitle">Add a Task</h2>
@@ -75,13 +70,14 @@
       <div class="column">
         <h2 class="subtitle">Timer</h2>
         <div id="timer">05:00</div>
-        <button id="startTimer" class="button">Start</button>
-        <button id="stopTimer" class="button">Stop</button>
-        <button id="resetTimer" class="button">Reset</button>
+        <button id="start" class="button">Start</button>
+        <button id="stop" class="button">Stop</button>
+        <button id="reset" class="button">Reset</button>
       </div>
     </div>
   </div>
 
   <script src="dashboard.js"></script>
 </body>
+
 </html>

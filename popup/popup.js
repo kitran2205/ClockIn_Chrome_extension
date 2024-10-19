@@ -5,17 +5,16 @@ document.getElementById('openDashboard').addEventListener('click', () => {
 
 document.getElementById('start').addEventListener('click', () => {
   chrome.runtime.sendMessage({ command: 'start' });
+  document.getElementById('start').disabled = true;
+  document.getElementById('stop').disabled = false;
   document.getElementById('reset').disabled = false;
 });
 
 document.getElementById('stop').addEventListener('click', () => {
   chrome.runtime.sendMessage({ command: 'stop' });
   document.getElementById('start').disabled = false;
-});
-
-document.getElementById('reset').addEventListener('click', () => {
-  chrome.runtime.sendMessage({ command: 'reset' });
-  document.getElementById('start').disabled = false;
+  document.getElementById('stop').disabled = true;
+  document.getElementById('reset').disabled = false;
 });
 
 // Listener for messages from the background script to update the timer display
@@ -27,29 +26,29 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 // Handle dropdown diffculty selector
 const dropdownItems = document.querySelectorAll('.dropdown-item');
-  const currentDifficultyText = document.getElementById('currentDifficulty');
-  const dropdown = document.querySelector('.dropdown'); // Dropdown container
-  
-  dropdownItems.forEach(item => {
-    item.addEventListener('click', (event) => {
-      event.preventDefault();
-      
-      // Get the selected difficulty
-      const selectedDifficulty = event.target.textContent;
-      
-      // Update the difficulty button text
-      currentDifficultyText.textContent = selectedDifficulty;
+const currentDifficultyText = document.getElementById('currentDifficulty');
+const dropdown = document.querySelector('.dropdown'); // Dropdown container
 
-      // Close the dropdown
-      dropdown.classList.remove('is-active');
-    });
+dropdownItems.forEach(item => {
+  item.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    // Get the selected difficulty
+    const selectedDifficulty = event.target.textContent;
+
+    // Update the difficulty button text
+    currentDifficultyText.textContent = selectedDifficulty;
+
+    // Close the dropdown
+    dropdown.classList.remove('is-active');
   });
+});
 
-  document.querySelector('.dropdown-trigger .button').addEventListener('click', () => {
-    dropdown.classList.toggle('is-active'); // Toggle dropdown visibility
-  });
+document.querySelector('.dropdown-trigger .button').addEventListener('click', () => {
+  dropdown.classList.toggle('is-active'); // Toggle dropdown visibility
+});
 
-function saveTask(taskInput, diffculty, isChecked = false){
+function saveTask(taskInput, diffculty, isChecked = false) {
   chrome.storage.local.get([diffculty], (result) => {
     let tasks = result[diffculty] || [];
     tasks.push({ task: taskInput, checked: isChecked });
@@ -59,7 +58,7 @@ function saveTask(taskInput, diffculty, isChecked = false){
   })
 }
 
-function isTaskDone(diffculty, index, isChecked){
+function isTaskDone(diffculty, index, isChecked) {
   chrome.storage.local.get([diffculty], (result) => {
     let tasks = result[diffculty] || [];
     tasks[index].checked = isChecked;
@@ -98,7 +97,7 @@ document.getElementById('submit').addEventListener('click', () => {
   const difficulty = document.getElementById('currentDifficulty').textContent; // Get the selected difficulty
   let difficultySection;
   if (!taskInput) return;
-  
+
   if (difficulty === 'Hard') {
     difficultySection = document.getElementById('hardtask');
   } else if (difficulty === 'Medium') {
