@@ -35,10 +35,37 @@ function displayBlockedWebsite(website) {
     const blockedList = document.getElementById('blockedList');
     const listItem = document.createElement('li');
     listItem.textContent = website;
+
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('delete-button');
+    deleteButton.style.marginLeft = '10px';
+    deleteButton.textContent = 'X';
+
     blockedList.appendChild(listItem);
+    deleteButton.addEventListener('click', () => confirmDelete(website));
+
+    listItem.appendChild(deleteButton);
+    blockedList.appendChild(listItem);
+
+}
+
+function confirmDelete(website) {
+    if (confirm(`Are you sure you want to delete ${website}?`)) {
+        chrome.storage.local.get(['blockedSites'], (result) => {
+            const blockedSites = result.blockedSites || [];
+            const updatedSites = blockedSites.filter((site) => site !== website);
+
+            chrome.storage.local.set({ blockedSites: updatedSites }, () => {
+                console.log(`${website} has been removed from the blocked sites list.`);
+                loadBlockedWebsites();
+            });
+        });
+    }
 }
 
 function loadBlockedWebsites() {
+    const blockedList = document.getElementById('blockedList');
+    blockedList.innerHTML = '';
     chrome.storage.local.get(['blockedSites'], (result) => {
         const blockedSites = result.blockedSites || [];
         blockedSites.forEach((site) => {
