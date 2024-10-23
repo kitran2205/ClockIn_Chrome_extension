@@ -1,6 +1,6 @@
 let countdown;
 let time = 5 * 60; // Initial timer set for 5 minutes
-
+let isActive = false;
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.command === 'start') {
         startTimer();
@@ -18,7 +18,10 @@ function startTimer() {
             if (time > 0) {
                 time--;
                 updatePopup();
-            } else {
+                isActive = true;
+
+            }
+            else {
                 completeTimer(); // Handle the completion of the timer
             }
         }, 1000);
@@ -27,6 +30,7 @@ function startTimer() {
             if (time > 0) {
                 time--;
                 updatePopup();
+                isActive = true;
             } else {
                 completeTimer(); // Handle the completion of the timer
             }
@@ -36,7 +40,7 @@ function startTimer() {
 
 function stopTimer() {
     clearInterval(countdown);
-    isRunning = false; // Ensure to mark the timer as not running
+    isActive = false; // Ensure to mark the timer as not running
     updatePopup();
 }
 
@@ -44,6 +48,7 @@ function resetTimer() {
     clearInterval(countdown);
     time = 5 * 60; // Reset the timer
     updatePopup(); // Update the popup with the new time
+    isActive = false;
 }
 
 function completeTimer() {
@@ -61,6 +66,7 @@ function completeTimer() {
         buttons: [{ title: 'Keep it Flowing.' }],
         priority: 0
     });
+    isActive = false;
 }
 
 function updatePopup() {
@@ -73,16 +79,18 @@ function updatePopup() {
 }
 
 function checkForBlockedWebsite(tabId, changeInfo, tab) {
-    if (changeInfo.status === 'complete' && tab.url) {
-        chrome.storage.local.get(['blockedSites'], (result) => {
-            const blockedSites = result.blockedSites || [];
-            const isBlocked = blockedSites.some((site) => tab.url.includes(site));
-            
-            if (isBlocked) {
-                chrome.tabs.update(tabId, { url: "https://canvas.com" });
-            }
-        });
+    if (isActive) {
+        if (changeInfo.status === 'complete' && tab.url) {
+            chrome.storage.local.get(['blockedSites'], (result) => {
+                const blockedSites = result.blockedSites || [];
+                const isBlocked = blockedSites.some((site) => tab.url.includes(site));
+
+                if (isBlocked) {
+                    chrome.tabs.update(tabId, { url: "https://canvas.com" });
+                }
+            });
+        }
     }
 }
-chrome.tabs.onUpdated.addListener(checkForBlockedWebsite);
 
+chrome.tabs.onUpdated.addListener(checkForBlockedWebsite);

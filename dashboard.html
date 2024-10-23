@@ -14,7 +14,7 @@
   </div>
   <div class="threecolumn">
     <!-- Column 1 -->
-    <div id="columnline"> 
+    <div id="columnline">
       <label class="columnhead">Block List</label>
       <div class="field">
         <label class="label">Add Website URL in the box below!</label>
@@ -37,7 +37,7 @@
       <h2 class="columnhead">Add a Task</h2>
       <div class="columns">
         <div class="column">
-          
+
           <div class="field has-addons">
             <div class="control">
               <input id="taskInput" class="input" type="text" placeholder="Enter task">
@@ -88,11 +88,24 @@
     <div id="timerline">
       <h1 class="columnhead">Create A Session</h1>
       <div class="column">
+        <div id="breakOrWork">Work</div>
         <h2 class="subtitle">Timer</h2>
         <div id="timer">05:00</div>
         <button id="start" class="button">Start</button>
         <button id="stop" class="button">Stop</button>
         <button id="reset" class="button">Reset</button>
+        <br></br>
+        <div class="subtitle">Break</div>
+        <div class="control">
+          <div>Duration:</div>
+          <input type="range" id="breakDuration" min="1" max="1" value="1" class="slider" />
+          <span id="breakDurationValue">1 minutes</span>
+        </div>
+        <div class="control">
+          <div>Frequency:</div>
+          <input type="range" id="breakFrequency" min="1" max="1" value="1" class="slider" />
+          <span id="breakFrequencyValue">Every 1 minute</span>
+        </div>
       </div>
     </div>
   </div>

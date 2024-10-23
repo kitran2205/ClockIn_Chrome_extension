@@ -1,6 +1,20 @@
+const breakDurationInput = document.getElementById('breakDuration');
+const breakDurationValue = document.getElementById('breakDurationValue');
+const breakFrequencyInput = document.getElementById('breakFrequency');
+const breakFrequencyValue = document.getElementById('breakFrequencyValue');
+
+breakDurationInput.addEventListener('input', function () {
+    breakDurationValue.textContent = `${this.value} minutes`;
+});
+
+breakFrequencyInput.addEventListener('input', function () {
+    breakFrequencyValue.textContent = `Every ${this.value} minutes`;
+});
+
+
 document.getElementById('submitWebsite').addEventListener('click', () => {
     const websiteInput = document.getElementById('websiteInput').value.trim();
-    
+
     if (websiteInput) {
         chrome.storage.local.get(['blockedSites'], (result) => {
             const blockedSites = result.blockedSites || [];
@@ -57,13 +71,15 @@ document.getElementById('reset').addEventListener('click', () => {
     document.getElementById('reset').disabled = true;
 });
 
+
+
+
 // Listener for messages from the background script to update the timer display
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.timer) {
         document.getElementById('timer').textContent = message.timer;
     }
 });
-
 // Function to save tasks to chrome storage
 function saveTask(taskInput, difficulty, isChecked = false) {
     chrome.storage.local.get([difficulty], (result) => {
