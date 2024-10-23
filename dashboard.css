@@ -130,3 +130,9 @@ body {
 .deletebutton button:hover {
   color: rgba(0 0 0);
 }
+
+.break {
+  font-size: 1.5em;
+  font-weight: bold;
+  font-family: cursive
+}
