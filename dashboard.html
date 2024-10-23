@@ -9,64 +9,84 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="head">
     <h1 class="title"><img src="../icons/icon-16.png" width="30" height="30"> Dashboard</h1>
-    <div class="field">
-      <label class="label">Add Website URL in the box below!</label>
-      <div class="control has-icons-left">
-        <input class="input" type="text" id="websiteInput" placeholder="Enter website to block" />
+  </div>
+  <div class="threecolumn">
+    <!-- Column 1 -->
+    <div id="columnline"> 
+      <label class="columnhead">Block List</label>
+      <div class="field">
+        <label class="label">Add Website URL in the box below!</label>
+        <div class="control has-icons-left">
+          <input class="input" type="text" id="websiteInput" placeholder="Enter website to block" />
+        </div>
+      </div>
+      <div class="control">
+        <button class="button is-primary" id="submitWebsite">Submit</button>
+      </div>
+      <div class="block">
+        <h2 class="subtitle">Websites You Blocked!</h2>
+        <div class="blocklist">
+          <ul id="blockedList"></ul>
+        </div>
       </div>
     </div>
-    <div class="control">
-      <button class="button is-primary" id="submitWebsite">Submit</button>
-    </div>
-    <div class="block">
-      <h2 class="subtitle">Websites You Blocked!</h2>
-      <ul id="blockedList"></ul>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <h2 class="subtitle">Add a Task</h2>
-        <div class="field has-addons">
-          <div class="control">
-            <input id="taskInput" class="input" type="text" placeholder="Enter task">
-          </div>
-          <div class="control">
-            <div class="dropdown is-hoverable">
-              <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span id="currentDifficulty">Easy</span>
-                  <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                  </span>
-                </button>
-              </div>
-              <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                <div class="dropdown-content">
-                  <a href="#" class="dropdown-item">Easy</a>
-                  <a href="#" class="dropdown-item">Medium</a>
-                  <a href="#" class="dropdown-item">Hard</a>
+    <!-- Column 2 -->
+    <div>
+      <h2 class="columnhead">Add a Task</h2>
+      <div class="columns">
+        <div class="column">
+          
+          <div class="field has-addons">
+            <div class="control">
+              <input id="taskInput" class="input" type="text" placeholder="Enter task">
+            </div>
+            <div class="control">
+              <div class="dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span id="currentDifficulty">Easy</span>
+                    <span class="icon is-small">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                  <div class="dropdown-content">
+                    <a href="#" class="dropdown-item">Easy</a>
+                    <a href="#" class="dropdown-item">Medium</a>
+                    <a href="#" class="dropdown-item">Hard</a>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="control">
+              <button class="submit" id="submitTask">Submit</button>
+            </div>
           </div>
-          <div class="control">
-            <button class="button" id="submitTask">Submit</button>
-          </div>
-        </div>
 
-        <h2 class="subtitle">To Do List</h2>
-        <div class="todolist">
-          <h3 class="hard">Hard</h3>
-          <ul id="hardTasks"></ul>
-          <h3 class="medium">Medium</h3>
-          <ul id="mediumTasks"></ul>
-          <h3 class="easy">Easy</h3>
-          <ul id="easyTasks"></ul>
+          <h2 class="subtitle">To Do List</h2>
+          <div class="todolist">
+            <div class="todopadding">
+              <h3 class="hard">Hard</h3>
+              <ul id="hardTasks"></ul>
+            </div>
+            <div class="todopadding">
+              <h3 class="medium">Medium</h3>
+              <ul id="mediumTasks"></ul>
+            </div>
+            <div class="todopadding">
+              <h3 class="easy">Easy</h3>
+              <ul id="easyTasks"></ul>
+            </div>
+          </div>
         </div>
       </div>
-
+    </div>
+    <!-- Column 3 -->
+    <div id="timerline">
+      <h1 class="columnhead">Create A Session</h1>
       <div class="column">
         <h2 class="subtitle">Timer</h2>
         <div id="timer">05:00</div>

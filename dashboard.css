@@ -27,18 +27,21 @@ hr.solid {
 
 .hard {
   font-size: 1.5em;
+  font-weight: bold;
   color: rgba(253 38 38 / 88%);
   text-decoration: underline;
 }
 
 .medium {
   font-size: 1.5em;
+  font-weight: bold;
   color: rgba(231 221 4 / 100%);
   text-decoration: underline;
 }
 
 .easy {
   font-size: 1.5em;
+  font-weight: bold;
   color: rgba(116 239 27 / 95%);
   text-decoration: underline;
 }
@@ -50,9 +53,11 @@ hr.solid {
 
 .todolist {
   display: grid;
-  grid-row: (1fr 1fr 1fr);
+  grid-template-rows: 1fr 1fr 1fr;
   row-gap: 1.5em;
   font-weight: bold;
+  border-radius: 0.5em;
+  border: 0.1em solid rgba(0 0 0 / 100%);
 }
 
 .settings {
@@ -61,8 +66,50 @@ hr.solid {
   margin-right: 1em;
 }
 
-.heading {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.head {
+  padding-left: 1%;
+  border-bottom: thick solid rgba(135 206 250 / 30%);
 }
 
+.threecolumn {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  height: 100%;
+}
+
+#columnline {
+  border-right: thick solid rgba(135 206 250 / 30%);
+  padding-right: 1em;
+}
+
+#timerline {
+  border-left: thick solid rgba(135 206 250 / 30%);
+}
+
+.columnhead {
+  display: flex;
+  font-weight: bold;
+  font-size: 2em;
+  justify-content: center;
+  padding-bottom: 0.5em;
+}
+
+body {
+  margin: 0;
+  height: 93vh;
+}
+.blocklist {
+  border-radius: 0.25em;
+  background: rgba(135 206 250 / 30%);
+  padding: 0.2em;
+  border: 0.1em solid rgba(0 0 0 / 100%);
+  height: 100%;
+  width: 100%;
+}
+
+.todopadding {
+  padding-left: 0.5em;
+}
