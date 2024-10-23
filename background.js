@@ -72,3 +72,17 @@ function updatePopup() {
     chrome.runtime.sendMessage({ timer: `${minutes}:${seconds}` });
 }
 
+function checkForBlockedWebsite(tabId, changeInfo, tab) {
+    if (changeInfo.status === 'complete' && tab.url) {
+        chrome.storage.local.get(['blockedSites'], (result) => {
+            const blockedSites = result.blockedSites || [];
+            const isBlocked = blockedSites.some((site) => tab.url.includes(site));
+            
+            if (isBlocked) {
+                chrome.tabs.update(tabId, { url: "https://canvas.com" });
+            }
+        });
+    }
+}
+chrome.tabs.onUpdated.addListener(checkForBlockedWebsite);
+

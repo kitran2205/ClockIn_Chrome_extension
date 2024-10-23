@@ -1,17 +1,39 @@
 document.getElementById('submitWebsite').addEventListener('click', () => {
-    const websiteInput = document.getElementById('websiteInput');
-    const website = websiteInput.value.trim();
+    const websiteInput = document.getElementById('websiteInput').value.trim();
+    
+    if (websiteInput) {
+        chrome.storage.local.get(['blockedSites'], (result) => {
+            const blockedSites = result.blockedSites || [];
+            if (!blockedSites.includes(websiteInput)) {
+                blockedSites.push(websiteInput);
+                chrome.storage.local.set({ blockedSites: blockedSites }, () => {
+                    console.log(`${websiteInput} has been added to the blocked sites list.`);
+                    displayBlockedWebsite(websiteInput);
+                });
+            }
+        });
 
-    if (website) {
-        const blockedList = document.getElementById('blockedList');
-        const listItem = document.createElement('li');
-        listItem.textContent = website;
-        // if valid : then append
-        blockedList.appendChild(listItem);
-        // else : output error message
-        websiteInput.value = '';
+        document.getElementById('websiteInput').value = '';
     }
 });
+
+function displayBlockedWebsite(website) {
+    const blockedList = document.getElementById('blockedList');
+    const listItem = document.createElement('li');
+    listItem.textContent = website;
+    blockedList.appendChild(listItem);
+}
+
+function loadBlockedWebsites() {
+    chrome.storage.local.get(['blockedSites'], (result) => {
+        const blockedSites = result.blockedSites || [];
+        blockedSites.forEach((site) => {
+            displayBlockedWebsite(site);
+        });
+    });
+}
+document.addEventListener('DOMContentLoaded', loadBlockedWebsites);
+
 
 // timer functionality
 document.getElementById('start').addEventListener('click', () => {
