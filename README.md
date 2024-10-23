@@ -1,13 +1,11 @@
 # ClockIn_Chrome_extension
 ## Installation Instructions for ClockIn Chrome Extension
-**Ensure you are using a chrome browser**\
+**Ensure you are using a chrome browser**
 1. Go to chrome://extensions
 2. Enable Developer Mode toggle switch in the top-right corner
 3. Click Load unpacked button
 4. Select the folder containing the ClockIn_extension files.
-5
-The extension will now appear in your list of extensions. Pin it to the toolbar for easy access.
-
+5.The extension will now appear in your list of extensions. Pin it to the toolbar for easy access.
 
 # Check for SSH Key
 GO into Git bash then type in " ls -al ~/.ssh"
