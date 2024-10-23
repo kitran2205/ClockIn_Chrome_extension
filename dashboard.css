@@ -58,6 +58,7 @@ hr.solid {
   font-weight: bold;
   border-radius: 0.5em;
   border: 0.1em solid rgba(0 0 0 / 100%);
+  background-color: rgba(135 206 250 / 30%);
 }
 
 .settings {
@@ -112,4 +113,20 @@ body {
 
 .todopadding {
   padding-left: 0.5em;
+}
+
+.deletebutton {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+}
+
+.deletebutton button {
+  display: flex;
+  justify-content: right;
+  color: rgba(135 206 250 / 0%);
+}
+
+.deletebutton button:hover {
+  color: rgba(0 0 0);
 }

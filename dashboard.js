@@ -34,10 +34,11 @@ document.getElementById('submitWebsite').addEventListener('click', () => {
 function displayBlockedWebsite(website) {
     const blockedList = document.getElementById('blockedList');
     const listItem = document.createElement('li');
+    listItem.classList.add('deletebutton')
     listItem.textContent = website;
 
     const deleteButton = document.createElement('button');
-    deleteButton.classList.add('delete-button');
+    // deleteButton.classList.add('deletebutton');
     deleteButton.style.marginLeft = '10px';
     deleteButton.textContent = 'X';
 

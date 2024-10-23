@@ -90,6 +90,10 @@ function loadTask() {
   });
 }
 
+function deleteTask() {
+
+}
+
 document.addEventListener('DOMContentLoaded', loadTask);
 
 document.getElementById('submit').addEventListener('click', () => {
@@ -121,3 +125,5 @@ document.getElementById('submit').addEventListener('click', () => {
 
   document.querySelector('.input').value = '';
 });
+
+
