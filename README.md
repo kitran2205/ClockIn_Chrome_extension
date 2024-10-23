@@ -8,7 +8,7 @@
 5. The extension will now appear in your list of extensions. Pin it to the toolbar for easy access.
 
 <br/>**MAKE SURE TO START TIMER**
-After this is done, the website will be blocked.
+<br/>After this is done, the website will be blocked.
 
 ## Check for SSH Key
 GO into Git bash then type in " ls -al ~/.ssh"
