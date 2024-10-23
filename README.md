@@ -6,7 +6,7 @@
 3. Click Load unpacked button
 4. Select the folder containing the ClockIn_extension files.
 5. The extension will now appear in your list of extensions. Pin it to the toolbar for easy access.
-**MAKE SURE TO START TIMER**
+<be />**MAKE SURE TO START TIMER**
 After this is done, the website will be blocked.
 
 ## Check for SSH Key
