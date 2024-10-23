@@ -1,5 +1,5 @@
 # ClockIn_Chrome_extension
-## Installation Instructions for ClockIn Chrome Extension
+## Start Up Instructions for ClockIn Chrome Extension
 **Ensure you are using a chrome browser**
 1. Go to chrome://extensions
 2. Enable Developer Mode toggle switch in the top-right corner
