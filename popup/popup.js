@@ -3,24 +3,15 @@ document.getElementById('openDashboard').addEventListener('click', () => {
   chrome.tabs.create({ url: "dashboard.html" });
 });
 
-document.getElementById('start').addEventListener('click', () => {
-  chrome.runtime.sendMessage({ command: 'start' });
-  document.getElementById('start').disabled = true;
-  document.getElementById('stop').disabled = false;
-  document.getElementById('reset').disabled = false;
-});
-
-document.getElementById('stop').addEventListener('click', () => {
-  chrome.runtime.sendMessage({ command: 'stop' });
-  document.getElementById('start').disabled = false;
-  document.getElementById('stop').disabled = true;
-  document.getElementById('reset').disabled = false;
-});
-
 // Listener for messages from the background script to update the timer display
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.timer) {
     document.getElementById('timer').textContent = message.timer;
+  }
+});
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.workOrBreak) {
+    document.getElementById('workOrBreak').textContent = message.workOrBreak;
   }
 });
 

@@ -82,24 +82,13 @@ document.getElementById('start').addEventListener('click', () => {
     chrome.runtime.sendMessage({ command: 'start' });
     document.getElementById('start').disabled = true;
     document.getElementById('stop').disabled = false;
-    document.getElementById('reset').disabled = false;
 });
 
 document.getElementById('stop').addEventListener('click', () => {
     chrome.runtime.sendMessage({ command: 'stop' });
     document.getElementById('start').disabled = false;
     document.getElementById('stop').disabled = true;
-    document.getElementById('reset').disabled = false;
 });
-
-document.getElementById('reset').addEventListener('click', () => {
-    chrome.runtime.sendMessage({ command: 'reset' });
-    document.getElementById('start').disabled = false;
-    document.getElementById('stop').disabled = false;
-    document.getElementById('reset').disabled = true;
-});
-
-
 
 
 // Listener for messages from the background script to update the timer display
@@ -108,6 +97,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         document.getElementById('timer').textContent = message.timer;
     }
 });
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.workOrBreak) {
+        document.getElementById('workOrBreak').textContent = message.workOrBreak;
+    }
+});
+
 // Function to save tasks to chrome storage
 function saveTask(taskInput, difficulty, isChecked = false) {
     chrome.storage.local.get([difficulty], (result) => {
