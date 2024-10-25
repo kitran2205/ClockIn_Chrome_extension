@@ -3,6 +3,23 @@ const breakDurationValue = document.getElementById('breakDurationValue');
 const breakFrequencyInput = document.getElementById('breakFrequency');
 const breakFrequencyValue = document.getElementById('breakFrequencyValue');
 
+const tabs = document.querySelectorAll('[data-tab-target]')
+const tabContents = document.querySelectorAll('[data-tab-content]')
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const target = document.querySelector(tab.dataset.tabTarget)
+        tabContents.forEach(tabContent => {
+            tabContent.classList.remove('active')
+        })
+        tabs.forEach(tab => {
+            tab.classList.remove('active')
+        })
+        tab.classList.add('active')
+        target.classList.add('active')
+    })
+})
+
 breakDurationInput.addEventListener('input', function () {
     breakDurationValue.textContent = `${this.value} minutes`;
 });
