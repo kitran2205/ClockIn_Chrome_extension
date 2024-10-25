@@ -22,29 +22,29 @@ hr.solid {
   border-top: 3px solid #bbb;
 }
 .verticalLine {
-  border-left: thick solid #111111;
+  border-left: thick solid rgba(1 58 99 / 70%);
 }
 
 .hard {
   font-size: 1em;
-  color: rgba(253 38 38 / 88%);
+  color: rgba(70 143 175 / 100%);
   text-decoration: underline;
 }
 
 .medium {
   font-size: 1em;
-  color: rgba(231 221 4 / 100%);
+  color: rgba(70 143 175 / 100%);
   text-decoration: underline;
 }
 
 .easy {
   font-size: 1em;
-  color: rgba(116 239 27 / 95%);
+  color: rgba(70 143 175 / 100%);
   text-decoration: underline;
 }
 
 .leftvertical {
-  border-right: thick solid #111111;
+  border-right: thick solid rgba(1 58 99 / 50%);
   padding-right: 2em;
 }
 
@@ -56,7 +56,6 @@ hr.solid {
   row-gap: 1.5em;
   font-weight: bold;
   border-radius: 0.5em;
-  border: 0.1em solid rgba(0 0 0 / 100%);
   background-color: rgba(135 206 250 / 30%);
 }
 

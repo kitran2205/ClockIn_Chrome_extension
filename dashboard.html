@@ -4,8 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ClockIn Dashboard</title>
+  <meta http-equiv="X-UA-Compatible" content="ie-edge">
+  <script src="dashboard.js" defer></script>
   <link href="dashboard.css" rel="stylesheet">
+  <title>ClockIn Dashboard</title>
 </head>
 
 <body>
@@ -14,13 +16,13 @@
   </div>
 
   <ul class="tabcolumn">
-    <li data-tab-target="#blocklist" class="tab">BlockList</li>
-    <li data-tab-target="#tasklist" class="tab">Task</li>
-    <li data-tab-target="#createsession" class="active tab">Session</li>
+    <li data-tab-target="#blocklisttab" class="tab">BlockList</li>
+    <li data-tab-target="#tasklisttab" class="tab">Task</li>
+    <li data-tab-target="#createsessiontab" class="active tab">Session</li>
   </ul>
   <div class="tab-content">
     <!-- Column 1 -->
-    <div id="blocklist" data-tab-content>
+    <div id="blocklisttab" data-tab-content>
       <label class="columnhead">Block List</label>
       <div class="field">
         <label class="label">Add Website URL in the box below!</label>
@@ -32,14 +34,14 @@
         <button class="button" id="submitWebsite" style=" border-radius: 0.25em;">Submit</button>
       </div>
       <div class="block">
-        <h2 class="subtitle">Websites You Blocked!</h2>
+        <h2 class="subtitle" style="display: flex; justify-content: center; padding-top: 1em;">Websites You Blocked!</h2>
         <div class="blocklist">
           <ul id="blockedList"></ul>
         </div>
       </div>
     </div>
     <!-- Column 2 -->
-    <div id="tasklist" data-tab-content>
+    <div id="tasklisttab" data-tab-content>
       <h2 class="columnhead">Add a Task</h2>
       <div class="columns">
         <div class="column">
@@ -90,16 +92,16 @@
       </div>
     </div>
     <!-- Column 3 -->
-    <div id="createsession" data-tab-content class="active">
+    <div id="createsessiontab" data-tab-content class="active">
       <h1 class="columnhead">Create A Session</h1>
       <div class="column">
-        <h2 class="subtitle" style="display: flex; justify-content: center; font-weight: bold;">Timer</h2>
+        <h2 class="subtitle">Timer</h2>
         <div id="timer">05:00</div>
         <button id="start" class="button" style=" border-radius: 0.25em;">Start</button>
         <button id="stop" class="button" style=" border-radius: 0.25em;">Stop</button>
         <button id="reset" class="button" style=" border-radius: 0.25em;">Reset</button>
         <br></br>
-        <div class="break">Break</div>
+        <div class="subtitle">Break</div>
         <div class="control">
           <div>Duration:</div>
           <input type="range" id="breakDuration" min="1" max="1" value="1" class="slider" />
@@ -113,7 +115,7 @@
       </div>
     </div>
   </div>
-  <script src="dashboard.js"></script>
+  
 </body>
 
 </html>

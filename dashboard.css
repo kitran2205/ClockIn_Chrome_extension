@@ -36,21 +36,21 @@ hr.solid {
 .hard {
   font-size: 1.5em;
   font-weight: bold;
-  color: rgba(253 38 38 / 88%);
+  color: rgba(70 143 175 / 100%);
   text-decoration: underline;
 }
 
 .medium {
   font-size: 1.5em;
   font-weight: bold;
-  color: rgba(231 221 4 / 100%);
+  color: rgba(70 143 175 / 100%);
   text-decoration: underline;
 }
 
 .easy {
   font-size: 1.5em;
   font-weight: bold;
-  color: rgba(116 239 27 / 95%);
+  color: rgba(70 143 175 / 100%);
   text-decoration: underline;
 }
 
@@ -65,8 +65,7 @@ hr.solid {
   row-gap: 1.5em;
   font-weight: bold;
   border-radius: 0.5em;
-  border: 0.1em solid rgba(0 0 0 / 100%);
-  background-color: rgba(135 206 250 / 30%);
+  background-color: rgba(162 210 255 / 40%);
 }
 
 .settings {
@@ -96,11 +95,11 @@ hr.solid {
 }
 
 .tab.active {
-  background-color: rgba(135 206 250 / 20%);
+  background-color: rgba(189 213 234 / 50%);
 }
 
 .tab:hover {
-  background-color: rgba(135 206 250 / 30%);
+  background-color: rgba(135 206 250 / 50%);
 }
 
 .tab-content {
@@ -117,16 +116,22 @@ hr.solid {
   height: 100%;
 }
 
-#blocklist {
-  padding-right: 1em;
+#blocklisttab {
+  padding-top: 2%;
+  padding-right: 25%;
+  padding-left: 25%;
 }
 
-#tasklist {
-  padding-right: 1em;
+#tasklisttab {
+  padding-top: 2%;
+  padding-right: 25%;
+  padding-left: 25%;
 }
 
-#createsession {
-  padding-right: 1em;
+#createsessiontab {
+  padding-top: 2%;
+  padding-right: 25%;
+  padding-left: 25%;
 }
 
 .columnhead {
@@ -135,17 +140,20 @@ hr.solid {
   font-size: 2em;
   justify-content: center;
   padding-bottom: 0.5em;
+  color: rgba(1 58 99 / 85%);
 }
 
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100%;
 }
+
 .blocklist {
   border-radius: 0.25em;
-  background: rgba(135 206 250 / 30%);
+  background: rgba(162 196 226 / 30%);
   padding: 0.2em;
-  border: 0.1em solid rgba(0 0 0 / 100%);
   height: 100%;
   width: 100%;
 }
@@ -174,4 +182,18 @@ body {
   font-size: 1.5em;
   font-weight: bold;
   font-family: cursive
+  var(--color)
+}
+
+.field.has-addons {
+  display: flex;
+  justify-content: center;
+}
+
+.subtitle {
+  font-size: 1.5em;
+  color: rgba(42 111 151 / 70%);
+  display: flex; 
+  justify-content: center;
+   font-weight: bold;
 }
