@@ -38,6 +38,8 @@
         <div class="blocklist">
           <ul id="blockedList"></ul>
         </div>
+        <br></br>
+        <label>Note: Websites are only blocked while the timer is running!</label>
       </div>
     </div>
     <!-- Column 2 -->
@@ -99,17 +101,16 @@
         <div id="timer">05:00</div>
         <button id="start" class="button" style=" border-radius: 0.25em;">Start</button>
         <button id="stop" class="button" style=" border-radius: 0.25em;">Stop</button>
-        <button id="reset" class="button" style=" border-radius: 0.25em;">Reset</button>
         <br></br>
         <div class="subtitle">Break</div>
         <div class="control">
           <div>Duration:</div>
-          <input type="range" id="breakDuration" min="1" max="1" value="1" class="slider" />
+          <input type="range" id="breakDuration" min="1" max="60" value="1" class="slider" />
           <span id="breakDurationValue">1 minutes</span>
         </div>
         <div class="control">
           <div>Frequency:</div>
-          <input type="range" id="breakFrequency" min="1" max="1" value="1" class="slider" />
+          <input type="range" id="breakFrequency" min="1" max="60" value="1" class="slider" />
           <span id="breakFrequencyValue">Every 1 minute</span>
         </div>
       </div>

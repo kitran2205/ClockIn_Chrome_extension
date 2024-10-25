@@ -133,7 +133,7 @@ function checkForBlockedWebsite(tabId, changeInfo, tab) {
                 const isBlocked = blockedSites.some((site) => tab.url.includes(site));
 
                 if (isBlocked) {
-                    chrome.tabs.update(tabId, { url: "https://canvas.com" });
+                    chrome.tabs.update(tabId, { url: "https://canvas.unl.edu" });
                 }
             });
         }

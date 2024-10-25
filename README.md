@@ -10,23 +10,13 @@
 <br/>**MAKE SURE TO START TIMER**
 <br/>After this is done, the website will be blocked.
 
-## Check for SSH Key
-GO into Git bash then type in " ls -al ~/.ssh"
-if you have a file starting with id_....pub you have a key already 
+## Tasks testing for
+1. Entering a website to block in the BlockList tab
+2. Adding a task in the Task tab
+3. Starting and stopping a timer
 
-Then use "cat ~/.ssh/id_ed...pub" to get the SSH key and add it to the GitHub SSH key file.
-replace ... with file name
-
-## IF you don't have an SSH key
-Then type in terminal "ssh-keygen -t ed25519 -C "your_email@example.com"" replace your_email@example with your github email.
-The SSH key should be shown and use the steps in "TO get to SSH Keys in Github
-
-## TO get to SSH Keys in Github go to:
-1. Setting using the Profile icon
-2. SHould be on the left-hand side.
-3. Then Add the Key using the Add new SSH key.
-
-
+## Depth task
+The website blocking feature is fully functional when the timer is running. 
 
 
 
