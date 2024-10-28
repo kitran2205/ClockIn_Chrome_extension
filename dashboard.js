@@ -155,10 +155,14 @@ function loadTasks() {
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
                 checkbox.checked = taskData.checked;
+                // Apply strikethrough if task is checked
+                if (taskData.checked) {
+                    taskItem.style.textDecoration = 'line-through';
+                }
                 checkbox.addEventListener('change', () => {
                     updateTaskCompletion(difficulty, index, checkbox.checked);
+                    taskItem.style.textDecoration = checkbox.checked ? 'line-through' : 'none';
                 });
-
                 taskItem.appendChild(checkbox);
                 taskItem.appendChild(document.createTextNode(` - ${taskData.task}`));
                 taskListElement.appendChild(taskItem);
@@ -212,6 +216,16 @@ document.getElementById('submitTask').addEventListener('click', () => {
     taskItem.appendChild(checkbox);
     taskItem.appendChild(document.createTextNode(` - ${taskInput}`));
     taskListElement.appendChild(taskItem);
+
+    // Reset dropdown to default
+    document.getElementById('currentDifficulty').textContent = "Select Difficulty";
+
+    // Add strikethrough on checkbox change
+    checkbox.addEventListener('change', () => {
+        const index = Array.from(taskListElement.children).indexOf(taskItem);
+        updateTaskCompletion(difficulty, index, checkbox.checked);
+        taskItem.style.textDecoration = checkbox.checked ? 'line-through' : 'none';
+    });
 
     // Event listener to update task completion in storage
     checkbox.addEventListener('change', () => {

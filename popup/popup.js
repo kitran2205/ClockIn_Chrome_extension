@@ -36,8 +36,13 @@ function loadTask() {
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.checked = data.checked;
+        // Apply strikethrough if task is checked
+        if (data.checked) {
+          item.style.textDecoration = 'line-through';
+        }
         checkbox.addEventListener('change', () => {
           isTaskDone(diffculty, index, checkbox.checked);
+          item.style.textDecoration = checkbox.checked ? 'line-through' : 'none';
         })
         item.appendChild(checkbox);
         item.appendChild(document.createTextNode(` - ${data.task}`));
