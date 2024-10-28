@@ -144,11 +144,11 @@ function updateTaskCompletion(difficulty, index, isChecked) {
 
 // Function to load tasks from chrome storage on page load
 function loadTasks() {
-    const difficulties = ['Hard', 'Medium', 'Easy'];
+    const difficulties = ['hard', 'medium', 'easy'];
     difficulties.forEach((difficulty) => {
         chrome.storage.local.get([difficulty], (result) => {
             const tasks = result[difficulty] || [];
-            const taskListElement = document.getElementById(`${difficulty.toLowerCase()}Tasks`);
+            const taskListElement = document.getElementById(`${difficulty}Tasks`);
 
             tasks.forEach((taskData, index) => {
                 const taskItem = document.createElement('p');
@@ -204,6 +204,8 @@ document.getElementById('submitTask').addEventListener('click', () => {
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = false;
+
+    console.log(`Saving task: ${taskInput} under difficulty: $ difficulty}`);
 
     saveTask(taskInput, difficulty, checkbox.checked);  // Save task to storage
 
