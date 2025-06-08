@@ -99,12 +99,19 @@
       <h1 class="columnhead">Create A Session</h1>
       <div class="column">
         <h2 class="subtitle">Timer</h2>
-        <div id="timer">05:00</div>
-        <button id="start" class="button" style=" border-radius: 0.25em;">Start</button>
-        <button id="stop" class="button" style=" border-radius: 0.25em;">Stop</button>
+        <div class="control">
+          <div>Session Duration:</div>
+          <input type="number" id="sessionDuration" min="1" max="60" value="5" style="width: 60px" /> minutes
+          <button id="start" class="button" style=" border-radius: 0.25em;">Start</button>
+          <button id="stop" class="button" style=" border-radius: 0.25em;">Stop</button>
+        </div>
+        <div id="timerDisplay" style="font-size: 2em; margin-top: 10px;">00:00</div>
+        <div id="breakInfo" style="margin-top: 10px;">
+          <div>Break Time Left: <span id="breakTimeLeftDisplay">0:00</span></div>
+          <div>Time Until Next Break: <span id="timeUntilNextBreakDisplay">0:00</span></div>
+        </div>
         <br></br>
         <div class="subtitle">Break</div>
-        <div class="control">
           <div>Duration:</div>
           <input type="range" id="breakDuration" min="1" max="60" value="1" class="slider" />
           <span id="breakDurationValue">1 minutes</span>

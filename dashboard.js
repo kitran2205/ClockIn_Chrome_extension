@@ -96,7 +96,15 @@ document.addEventListener('DOMContentLoaded', loadBlockedWebsites);
 
 // timer functionality
 document.getElementById('start').addEventListener('click', () => {
-    chrome.runtime.sendMessage({ command: 'start' });
+    const sessionDuration = parseInt(document.getElementById('sessionDuration').value, 10) || 5;
+    const breakDuration = parseInt(document.getElementById('breakDuration').value, 10) || 1;
+    const breakFrequency = parseInt(document.getElementById('breakFrequency').value, 10) || 1;
+    chrome.runtime.sendMessage({ 
+        command: 'start', 
+        duration : sessionDuration,
+        breakDuration: breakDuration,
+        breakFrequency: breakFrequency
+    });
     document.getElementById('start').disabled = true;
     document.getElementById('stop').disabled = false;
 });
@@ -111,8 +119,18 @@ document.getElementById('stop').addEventListener('click', () => {
 // Listener for messages from the background script to update the timer display
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.timer) {
-        document.getElementById('timer').textContent = message.timer;
+        document.getElementById('timerDisplay').textContent = message.timer;
     }
+    if (typeof message.breakTimeLeft !== 'undefined') {
+        let min = Math.floor(message.breakTimeLeft / 60);
+        let sec = message.breakTimeLeft % 60;
+        document.getElementById('breakTimeLeftDisplay').textContent = `${min}:${sec < 10 ? '0' : ''}${sec}`;
+    } 
+    if (typeof message.timeUntilNextBreak !== 'undefined') {
+        let min = Math.floor(message.timeUntilNextBreak / 60);
+        let sec = message.timeUntilNextBreak % 60;
+        document.getElementById('timeUntilNextBreakDisplay').textContent = `${min}:${sec < 10 ? '0' : ''}${sec}`;
+    }  
 });
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.workOrBreak) {

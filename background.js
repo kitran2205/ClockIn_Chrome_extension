@@ -1,14 +1,22 @@
 let countdown;
 let time = 5 * 60; // Initial timer set for 5 minutes
-let shortBreakTime = 60; // New 1-minute timer
-let breakTime = [4 * 60, 2 * 60];
-let resumeTime;
 let isActive = false;
-let isShortBreak = false; // Track if the short break timer is running
+let isOnBreak = false;
+let breakDuration = 60; // 1 minute for the short break
+let breakFrequency = 10 * 60; // Number of seconds before a break
+let nextBreak = breakFrequency; // Counter for the next break
+let sessionTotal = 5 * 60;
+let breakTimeLeft = 0; // Track remaining break time
 
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.command === 'start') {
+        time = (message.duration || 5) * 60;
+        sessionTotal = time;
+        breakDuration = (message.breakDuration || 1) * 60;
+        breakFrequency = (message.breakFrequency || 1) * 60;
+        nextBreak = breakFrequency;
+        isOnBreak = false;
         startTimer();
     } else if (message.command === 'stop') {
         resetTimer();
@@ -16,67 +24,35 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 function startTimer() {
-    if (time === 5 * 60 || countdown === undefined) { // Start a new timer if it's reset or not set
-        clearInterval(countdown); // Clear any existing intervals
-        countdown = setInterval(() => {
+    clearInterval(countdown);
+    countdown = setInterval(() => {
+        if (!isOnBreak) {
             if (time > 0) {
                 time--;
-                isActive = true;
-                // Automatically switch to the 1-minute timer when 4 minutes remain
-                if (breakTime.includes(time)) {
-                    resumeTime = time;
-                    time = shortBreakTime; // Switch to the 1-minute timer
-                    isShortBreak = true; // Set flag for short break
-                    isActive = false;
-                } if (isShortBreak) {
-                    isActive = false;
+                if ((sessionTotal - time) === nextBreak && time > breakDuration) {
+                    isOnBreak = true;
+                    breakTimeLeft = breakDuration; // Start break countdown
+                    chrome.runtime.sendMessage({ workOrBreak: "Break!" });
+                    nextBreak += breakFrequency;
+                } else {
+                    chrome.runtime.sendMessage({ workOrBreak: "Session is active!" });
                 }
                 updatePopup();
-                updateStatus();
-
             } else {
-                if (isShortBreak) {
-                    // When the 1-minute timer ends, switch back to the 4-minute timer
-                    time = resumeTime - 1;
-                    isShortBreak = false; // Short break has ended
-                    isActive = true;
-                    updatePopup();
-                    updateStatus();
-                } else {
-                    completeTimer(); // Complete the main timer
-                }
+                completeTimer();
             }
-        }, 1000);
-    } else { // Resume the existing timer
-        countdown = setInterval(() => {
-            if (time > 0) {
-                time--;
-                isActive = true;
-                // Automatically switch to the 1-minute timer when 4 minutes remain
-                if (time.includes(breakTime)) {
-                    resumeTime = time;
-                    time = shortBreakTime; // Switch to the 1-minute timer
-                    isShortBreak = true;
-                    isActive = false;
-                } if (isShortBreak) {
-                    isActive = false;
-                }
+        } else {
+            // During break, count down breakTimeLeft
+            if (breakTimeLeft > 0) {
+                breakTimeLeft--;
+                chrome.runtime.sendMessage({ workOrBreak: "Break!" });
                 updatePopup();
-                updateStatus();
             } else {
-                if (isShortBreak) {
-                    // When the 1-minute timer ends, switch back to the 4-minute timer
-                    time = resumeTime - 1;
-                    isShortBreak = false; // Short break has ended
-                    isActive = true;
-                    updatePopup();
-                    updateStatus();
-                } else {
-                    completeTimer(); // Complete the main timer
-                }
+                isOnBreak = false;
+                chrome.runtime.sendMessage({ workOrBreak: "Session is active!" });
             }
-        }, 1000);
-    }
+        }
+    }, 1000);
 }
 
 function resetTimer() {
@@ -112,7 +88,14 @@ function updatePopup() {
     minutes = minutes < 10 ? '0' + minutes : minutes;
     seconds = seconds < 10 ? '0' + seconds : seconds;
 
-    chrome.runtime.sendMessage({ timer: `${minutes}:${seconds}` });
+    let timeUntilNextBreak = isOnBreak ? 0 : nextBreak - (sessionTotal - time);
+    timeUntilNextBreak = timeUntilNextBreak < 0 ? 0 : timeUntilNextBreak;
+
+    chrome.runtime.sendMessage({ 
+        timer: `${minutes}:${seconds}`,
+        breakTimeLeft: breakTimeLeft,
+        timeUntilNextBreak: timeUntilNextBreak,
+     });
 }
 function updateStatus() {
     if (isActive) {
